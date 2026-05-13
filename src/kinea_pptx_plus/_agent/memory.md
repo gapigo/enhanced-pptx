@@ -6,6 +6,10 @@ Aqui você (o agente) escreve tudo que aprende. Esse arquivo é seu cérebro per
 
 - **2026-05-12 (seed)**: Base é `python-pptx-ng`, fork mantido do scanny. Não é `python-pptx` original.
 - **2026-05-12 (seed)**: 3 estratégias (XML puro / híbrido win32 / overlay) decididas pelo Gabriel. Não rediscutir.
+- **2026-05-13 (line_area_between)**: OOXML nativo não suporta "area between two lines". Tentativas: combo area+line não funciona (preenche do eixo até a linha superior, não entre as linhas). areaChart com transparência + sobreposição também falha (PowerPoint empilha áreas como accumulated stacks). Solução: overlay com `a:custGeom` freeform polygon com fill alpha.
+- **2026-05-13 (label_box)**: `p:sp` shapes inseridos via `slide.shapes._spTree.append(sp)` funcionam, mas perdem a numeração de ID (cNvPr id="0" em todos). PowerPoint corrige na abertura, então roundtrip gate precisa salvar → abrir → salvar → comparar XML.
+- **2026-05-13 (positioner)**: `Positioner.from_chart_xml` precisa do chart XML from `extract_chart_xml`, que por sua vez extrai o chartSpace serializado. EMU calculations baseiam-se em plotArea bounding box com fallback de 10% margins.
+- **2026-05-13 (5yr fixture)**: Andes vs CDI sintético com 70 pontos mensais (Jan 2020 - Out 2025) via `scripts/synth_andes_vs_cdi.py`. Testado com paint_series_colors + build_line_with_end_label — funciona.
 
 ## XML quirks descobertos
 
