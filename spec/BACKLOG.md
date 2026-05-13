@@ -5,7 +5,7 @@ Tasks em ordem de dependência. Agente pega a primeira com `status: ready`. Não
 ---
 
 ## T01 — Setup base
-- **status:** ready
+- **status:** done
 - **escopo:** chore
 - **descrição:** Cria pyproject.toml, instala python-pptx-ng, lxml, pytest, lê PPTX de fixture e devolve um chartSpace XML em stdout.
 - **DoD:** `pytest tests/regression/test_T01_setup.py::test_can_load_chart_xml` passa.
