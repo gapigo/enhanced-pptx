@@ -2,3 +2,6 @@
 __pycache__/
 *.pyc
 .trash/
+*.pptx
+!tests/fixtures/*.pptx
+!tests/fixtures/**/*.pptx
